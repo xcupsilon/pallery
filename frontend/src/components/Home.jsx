@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import axios from 'axios'
-import phd from '../imgs/phd.jpg'
 
 // components
+import Pfp from './Pfp'
+
+// pictures
+import phd from '../imgs/phd.jpg'
+import gallery_banner from '../imgs/gallery_banner.jpg'
+import login_banner from '../imgs/login_banner.jpg'
 
 const Home = () => {
   const [users, setUsers] = useState('')
@@ -48,8 +53,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="container bg-black rounded-lg shadow-xl w-3/4 mt-12">
+      <div className="container bg-black rounded-lg shadow-xl w-3/4 h-48 mt-12">
         <WelcomeMessage />
+      </div>
+      <div className="absolute top-12 right-12">
+        <Pfp />
       </div>
     </>
 
