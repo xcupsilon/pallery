@@ -22,8 +22,8 @@ const Signup = () => {
 
   return (
     <div className="flex justify-center mt-20">
-      <div className="grid grid-cols-5 bg-blue-100 w-3/4 h-4/6 p-20 rounded-3xl shadow-lg">
-        <img src={banner} alt="" className="object-cover col-span-3 h-full w-5/6 rounded-2xl bg-white border-solid border-8 border-blue-200 shadow-lg hover:shadow-xl" />
+      <div className="grid grid-cols-5 bg-white w-3/4 h-4/6 p-20 rounded-3xl shadow-lg">
+        <img src={banner} alt="" className="object-cover col-span-3 h-full w-5/6 rounded-2xl bg-white border-double border-8 border-blue-200 shadow-lg hover:shadow-xl" />
         <div className="col-span-2 flex flex-col justify-center items-center">
           <h1 className="text-blue-300 font-semibold text-6xl font-mono mb-2 mt-8">Signup</h1>
           <h2 className="text-blue-200 text-2xl inline">

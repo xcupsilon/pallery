@@ -22,7 +22,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center mt-20">
-      <div className="grid grid-cols-5 bg-red-100 w-3/4 h-4/6 p-20 pl-10 rounded-3xl shadow-lg">
+      <div className="grid grid-cols-5 bg-white w-3/4 h-4/6 p-20 pl-10 rounded-3xl shadow-lg">
         <div className="col-span-2 flex flex-col justify-center items-center">
           <h1 className="text-red-300 font-semibold text-7xl font-mono mb-2 mt-8">Welcome!</h1>
           <h2 className="text-red-200 text-2xl">
@@ -39,7 +39,7 @@ const Login = () => {
             Login
           </button>
         </div>
-        <img src={banner} alt="" className="object-cover col-span-3 h-full w-5/6 rounded-2xl ml-20 bg-white border-solid border-8 border-red-200 shadow-lg hover:shadow-xl" />
+        <img src={banner} alt="" className="object-cover col-span-3 h-full w-5/6 rounded-2xl ml-20 bg-white border-solid border-8 border-red-200 border-double shadow-lg hover:shadow-xl" />
       </div>
     </div>
   )

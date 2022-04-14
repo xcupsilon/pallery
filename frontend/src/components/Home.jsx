@@ -16,19 +16,23 @@ const Home = () => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [loggedInUser, setLoggedInUser] = useState('')
 
-    const WelcomeMessage = () => {
+    const WelcomeBlock = () => {
       if (!loggedIn) {
         return (
-          <Link to="/login">
-            <button type="button" className="shadow appearance-none rounded-lg m-5 mb-5 px-10 py-10 text-4xl font-mono text-white text-left">
-              Please Login!
-            </button>
-          </Link>
+          <div className="container bg-login_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
+            <Link to="/login">
+              <button type="button" className="appearance-none m-5 mt-10 px-10 py-10 text-6xl hover:drop-shadow-glow font-mono text-white">
+                Please Login!
+              </button>
+            </Link>
+          </div>
         )
       }
       return (
-        <div className="px-10 py-10 text-4xl font-mono text-white text-left">
-          Your Pallery!
+        <div className="container bg-gallery_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
+          <div className="px-10 py-10 text-6xl font-mono hover:drop-shadow-glow text-white text-left">
+            Your Pallery!
+          </div>
         </div>
       )
     }
@@ -53,9 +57,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="container bg-black rounded-lg shadow-xl w-3/4 h-48 mt-12">
-        <WelcomeMessage />
-      </div>
+      <WelcomeBlock />
       <div className="absolute top-12 right-12">
         <Pfp />
       </div>
