@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom'
 const Pfp = ({ loggedIn }) => {
   const Img = () => {
     if (loggedIn) {
-      return <img src={yuta} alt="" className="w-24 h-24 rounded-full shadow-md hover:shadow-xl" />
+      return <img src={yuta} alt="" className="w-24 h-24 rounded-full hover:shadow-md" />
     } else {
-      return <img src={phd} alt="" className="w-24 h-24 rounded-full shadow-md hover:shadow-xl" />
+      return <img src={phd} alt="" className="w-24 h-24 rounded-full hover:shadow-md" />
     }
   }
 

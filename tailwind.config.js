@@ -5,10 +5,11 @@ module.exports = {
   theme: {
     extend: {
       dropShadow: {
-        'glow': '0 5px 5px rgba(255, 255, 255, 0.8)',
+        'light-glow': '0 5px 5px rgba(255, 255, 255, 0.65)',
+        'glow': '0 5px 5px rgba(255, 255, 255, 1.0)',
       },
       boxShadow: {
-        'banner': '0 35px 40px -15px rgba(0, 0, 0, 0.25)',
+        'banner': '0 35px 20px -25px rgba(0, 0, 0, 0.3)',
       },
       backgroundImage: {
         'login_banner': "url('../imgs/login_banner.jpg')",

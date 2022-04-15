@@ -6,11 +6,7 @@ import axios from 'axios'
 // components
 import Pfp from './Pfp'
 import Logout from './Logout'
-
-// pictures
-import phd from '../imgs/phd.jpg'
-import gallery_banner from '../imgs/gallery_banner.jpg'
-import login_banner from '../imgs/login_banner.jpg'
+import Showcase from './Showcase'
 
 const Home = () => {
   const [users, setUsers] = useState('')
@@ -22,8 +18,10 @@ const Home = () => {
       return (
         <div className="container bg-100% bg-login_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
           <Link to="/login">
-            <button type="button" className="appearance-none m-5 mt-7 px-10 py-10 text-6xl hover:drop-shadow-glow font-mono text-white">
-              Please Login!
+            <button type="button" className="appearance-none m-5 mt-7 px-10 py-10 text-6xl font-mono text-white">
+              <h1 className="drop-shadow-light-glow hover:drop-shadow-glow">
+                Please Login!
+              </h1>
             </button>
           </Link>
         </div>
@@ -31,8 +29,10 @@ const Home = () => {
     }
     return (
       <div className="container overflow-auto bg-100% bg-gallery_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
-        <div className="m-5 mt-7 px-10 py-10 text-6xl font-mono hover:drop-shadow-glow text-white text-left">
-          Your Pallery!
+        <div className="m-5 mt-7 px-10 py-10 text-6xl font-mono text-white text-left">
+          <h1 className="drop-shadow-light-glow hover:drop-shadow-glow">
+            Your Pallery!
+          </h1>
         </div>
       </div>
     )
@@ -65,6 +65,17 @@ const Home = () => {
           <Logout user={loggedInUser} />
         }
       </span>
+      <div className="grid grid-cols-3 gap-10 m-10">
+        <Showcase />
+        <Showcase />
+        <Showcase />
+        <Showcase />
+        <Showcase />
+        <Showcase />
+        <Showcase />
+        <Showcase />
+        <Showcase />
+      </div>
     </>
   )
 }
