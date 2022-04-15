@@ -27,7 +27,7 @@
     "tailwindcss": "^3.0.23"
   },
   "scripts": {
-    "build": "parcel frontend/src/index.html",
+    "build": "parcel watch frontend/src/index.html",
     "server": "nodemon backend/server.js",
     "dev": "concurrently --kill-others \"npm run build\" \"npm run server\""
   }
