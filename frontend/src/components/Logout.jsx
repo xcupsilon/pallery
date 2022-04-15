@@ -11,15 +11,15 @@ const Logout = ({ user }) => {
 
   return (
     <div className="mt-3 text-2xl font-mono text-dark_matcha">
-      <span className="font-semibold">
+      {/* <span className="font-semibold">
         Hi&nbsp;
       </span>
       <span className="font-semibold">
         {user}
         !&nbsp;
-      </span>
+      </span> */}
       <button onClick={e => logout()} type="submit" className="inline" aria-label="Logout">
-        Logout
+        &gt; Logout
       </button>
     </div>
   )

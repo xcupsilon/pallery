@@ -59,12 +59,16 @@ const Home = () => {
   return (
     <>
       <WelcomeBlock />
-      <span className="absolute top-12 right-12 flex flex-col items-center">
-        <Pfp loggedIn={loggedIn} />
-        {loggedIn && 
-          <Logout user={loggedInUser} />
-        }
-      </span>
+      <div className="absolute border-t-2 w-64 border-solid border-black top-12 right-0 flex flex-col items-center">
+        <span className="w-48 py-5 relative left-20 border-b-2 border-black">
+          <Pfp loggedIn={loggedIn} />
+        </span>
+        <span className="relative left-8">
+          {loggedIn && 
+            <Logout user={loggedInUser} />
+          }
+        </span>
+      </div>
       <div className="grid grid-cols-3 gap-10 m-10">
         <Showcase />
         <Showcase />
