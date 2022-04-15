@@ -20,7 +20,7 @@ const Home = () => {
   const WelcomeBlock = () => {
     if (!loggedIn) {
       return (
-        <div className="container bg-login_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
+        <div className="container bg-100% bg-login_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
           <Link to="/login">
             <button type="button" className="appearance-none m-5 mt-7 px-10 py-10 text-6xl hover:drop-shadow-glow font-mono text-white">
               Please Login!
@@ -30,8 +30,8 @@ const Home = () => {
       )
     }
     return (
-      <div className="container bg-gallery_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
-        <div className="px-10 py-10 m-5 mt-7 text-6xl font-mono hover:drop-shadow-glow text-white text-left">
+      <div className="container overflow-auto bg-100% bg-gallery_banner bg-center rounded-tr-2xl rounded-br-3xl shadow-lg hover:shadow-banner w-3/4 h-48 mt-12">
+        <div className="m-5 mt-7 px-10 py-10 text-6xl font-mono hover:drop-shadow-glow text-white text-left">
           Your Pallery!
         </div>
       </div>
@@ -59,12 +59,12 @@ const Home = () => {
   return (
     <>
       <WelcomeBlock />
-      <div className="absolute top-12 right-12 flex flex-col justify-items-end">
+      <span className="absolute top-12 right-12 flex flex-col items-center">
         <Pfp loggedIn={loggedIn} />
         {loggedIn && 
           <Logout user={loggedInUser} />
         }
-      </div>
+      </span>
     </>
   )
 }

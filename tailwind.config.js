@@ -13,6 +13,10 @@ module.exports = {
       backgroundImage: {
         'login_banner': "url('../imgs/login_banner.jpg')",
         'gallery_banner': "url('../imgs/gallery_banner.jpg')",
+        
+      },
+      backgroundSize: {
+        '100%': '100%',
       }
     },
   },
