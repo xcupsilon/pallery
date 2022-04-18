@@ -9,9 +9,9 @@ const Profile = ({ user }) => {
 
   return (
     <>
-      <Link to='/'>
+      <Link to="/">
         <div className="mt-10 ml-14 text-5xl font-mono">
-         &lt;
+          &lt;
         </div>
       </Link>
 

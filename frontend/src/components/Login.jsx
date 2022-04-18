@@ -35,7 +35,7 @@ const Login = () => {
           <div className="mb-4">
             <input onChange={e => setPassword(e.target.value)} value={password} className="w-80 shadow border rounded-xl py-4 px-3 mt-2 text-center text-black text-lg leading-tight focus:outline-none focus:shadow-outline focus:border-lemon" id="password" type="password" placeholder="Password" />
           </div>
-          <button onClick={e => login()} type='submit' className="w-60 shadow appearance-none border rounded-xl py-4 px-3 mt-2 mb-8 text-red-500 bg-red-200 text-lg leading-tight">
+          <button onClick={e => login()} type="submit" className="w-60 shadow appearance-none border rounded-xl py-4 px-3 mt-2 mb-8 text-red-500 bg-red-200 text-lg leading-tight">
             Login
           </button>
         </div>
