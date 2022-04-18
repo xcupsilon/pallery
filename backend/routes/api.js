@@ -56,6 +56,7 @@ router.post('/profile/add_collection', isAuthenticated, async (req, res) => {
     const { body, session } = req
     const { username } = session
     const { oldImg, newImg } = body
+    console.log(oldImg, newImg)
     const { collections } = User.findOne({ username })
 
     if (!collections) {

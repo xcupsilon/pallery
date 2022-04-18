@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -18,6 +18,9 @@ const MyProfile = () => {
   const [myAbout, setMyAbout] = useState('')
   const [myCollection, setMyCollection] = useState([])
   const [currImg, setCurrImg] = useState('')
+
+  const [scrollWidth, setScrollWidth] = useState(0)
+  const carousel = useRef()
 
   const [infoModalVisible, setInfoModalVisible] = useState(false)
 
@@ -42,7 +45,11 @@ const MyProfile = () => {
     }
 
     getProfileInfo()
-  }, [infoModalVisible, collectionModalVisible])
+  }, [infoModalVisible, myCollection])
+
+  useEffect(() => {
+    setScrollWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+  }, [myCollection])
 
   const InfoModal = () => {
     if (infoModalVisible) {
@@ -94,12 +101,12 @@ const MyProfile = () => {
       </div>
 
       <div className="m-10 mt-5 flex justify-center ">
-        <motion.div className="carousel bg-gray-200">
-          <motion.div className="inner-carousel">
+        <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
+          <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex">
             {myCollection.map((img, index) => (
-              <motion.div className="item h-[25rem] w-[35rem]" key={index}>
+              <motion.div className="item min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] p-5" key={index}>
                 <button onClick={e => artWorkClicked(img)} type="button">
-                  <img src={img} alt="" className="h-[25rem] w-[35rem] object-cover" />
+                  <img src={img} alt="" className="h-full w-full object-cover rounded-sm" />
                 </button>
               </motion.div>
             ))}
