@@ -51,15 +51,34 @@ router.post('/profile/change_about', isAuthenticated, async (req, res) => {
   }
 })
 
-router.post('/questions/add', isAuthenticated, async (req, res) => {
+router.post('/profile/add_collection', isAuthenticated, async (req, res) => {
   try {
     const { body, session } = req
-    const { username } = session // Getting the author from the cookie :)
-    const { questionText } = body
-    await Question.create({ questionText, author: username })
-    res.send(`Question created for "${questionText}" by ${username}`)
+    const { username } = session
+    const { oldImg, newImg } = body
+    const { collections } = User.findOne({ username })
+
+    if (!collections) {
+      await User.updateOne({ username },
+        {
+          $set:
+          {
+            collections: [newImg],
+          },
+        })
+    } else {
+      await User.updateOne({ username },
+        {
+          $set:
+          {
+            collections: collections.map(img => (img !== oldImg ? img : newImg)),
+          },
+        })
+    }
+
+    res.send(`Image added to collection`)
   } catch (error) {
-    res.status(400).send('Error occured when adding question!')
+    res.status(400).send('Error occurred when adding to collection')
   }
 })
 

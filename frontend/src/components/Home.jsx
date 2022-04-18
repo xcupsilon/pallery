@@ -5,7 +5,6 @@ import axios from 'axios'
 
 // components
 import WelcomeBlock from './WelcomeBlock'
-import Pfp from './HomePfp'
 import Logout from './Logout'
 import Showcase from './Showcase'
 
