@@ -12,6 +12,8 @@ import Pfp from './Pfp'
 import ProfileModal from './ProfileModal'
 import CollectionModal from './CollectionModal'
 
+const PLACE_HOLDER = 'https://cdn.vox-cdn.com/thumbor/qDV-Av0h_Qf1u6MUJ9L_D7uLM-w=/0x0:1200x800/1200x800/filters:focal(428x63:620x255)/cdn.vox-cdn.com/uploads/chorus_image/image/66160336/image__13_.0.png'
+
 const MyProfile = () => {
   const [user, setUser] = useState('')
   const [myPfp, setMyPfp] = useState(phd)
@@ -30,7 +32,7 @@ const MyProfile = () => {
     const getProfileInfo = async () => {
       const { data } = (await axios.get('/api/profile/get_data'))
       const {
-        username, pfp, about, collection,
+        username, pfp, about, collections,
       } = data
       if (!pfp) {
         setMyPfp(phd)
@@ -39,8 +41,8 @@ const MyProfile = () => {
       }
       setUser(username)
       setMyAbout(about)
-      if (collection) {
-        setMyCollection(collection)
+      if (collections) {
+        setMyCollection(collections)
       }
     }
 
@@ -61,8 +63,13 @@ const MyProfile = () => {
     return <></>
   }
 
-  const addPlaceHolderArt = () => {
-    setMyCollection([...myCollection, 'https://cdn.vox-cdn.com/thumbor/qDV-Av0h_Qf1u6MUJ9L_D7uLM-w=/0x0:1200x800/1200x800/filters:focal(428x63:620x255)/cdn.vox-cdn.com/uploads/chorus_image/image/66160336/image__13_.0.png'])
+  const addPlaceHolderArt = async () => {
+    await axios.post('api/profile/add_collection', { newImg: PLACE_HOLDER })
+      .catch(error => {
+        alert(`${error.response.data}`)
+      })
+
+    setMyCollection([...myCollection, PLACE_HOLDER])
   }
 
   const AddArtButton = () => (

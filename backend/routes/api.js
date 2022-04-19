@@ -55,9 +55,38 @@ router.post('/profile/add_collection', isAuthenticated, async (req, res) => {
   try {
     const { body, session } = req
     const { username } = session
+    const { newImg } = body
+    const { collections } = await User.findOne({ username })
+
+    if (!collections) {
+      await User.updateOne({ username },
+        {
+          $set:
+          {
+            collections: [newImg],
+          },
+        })
+    } else {
+      await User.updateOne({ username },
+        {
+          $set:
+          {
+            collections: [...collections, newImg],
+          },
+        })
+    }
+    res.send(`New placeholder art added to collection`)
+  } catch (error) {
+    res.status(400).send('Error occurred when adding to collection')
+  }
+})
+
+router.post('/profile/replace_collection', isAuthenticated, async (req, res) => {
+  try {
+    const { body, session } = req
+    const { username } = session
     const { oldImg, newImg } = body
-    console.log(oldImg, newImg)
-    const { collections } = User.findOne({ username })
+    const { collections } = await User.findOne({ username })
 
     if (!collections) {
       await User.updateOne({ username },
@@ -76,10 +105,9 @@ router.post('/profile/add_collection', isAuthenticated, async (req, res) => {
           },
         })
     }
-
-    res.send(`Image added to collection`)
+    res.send(`Old image replaced by new image in collection`)
   } catch (error) {
-    res.status(400).send('Error occurred when adding to collection')
+    res.status(400).send('Error occurred when replacing collection')
   }
 })
 

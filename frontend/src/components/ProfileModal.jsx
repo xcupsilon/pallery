@@ -19,7 +19,6 @@ const ProfileModal = ({ oldImage, oldAbout, setModalVisible }) => {
       })
   }
 
-
   const submit = async e => {
     e.preventDefault()
     // Chanege profile

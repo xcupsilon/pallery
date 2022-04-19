@@ -5,7 +5,7 @@ const CollectionModal = ({ oldImage, setModalVisible }) => {
   const [imageLink, setImageLink] = useState(oldImage)
 
   const addArtwork = async () => {
-    await axios.post('api/profile/add_collection', { oldImg: oldImage, newImg: imageLink })
+    await axios.post('api/profile/replace_collection', { oldImg: oldImage, newImg: imageLink })
       .catch(error => {
         alert(`${error.response.data}`)
       })
