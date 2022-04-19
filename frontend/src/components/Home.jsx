@@ -19,6 +19,11 @@ const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState('')
 
   useEffect(() => {
+    const getAllUserData = async () => {
+      const { data } = (await axios.post('/api/users/get_data_all'))
+      setUsers(data)
+    }
+
     const getProfileInfo = async () => {
       const { data } = (await axios.get('/api/profile/get_data'))
       const { pfp } = data
@@ -38,6 +43,7 @@ const Home = () => {
       }
     }
 
+    getAllUserData()
     getProfileInfo()
     checkLoginStatus()
     const intervalID = setInterval(() => {
@@ -46,6 +52,13 @@ const Home = () => {
 
     return () => clearInterval(intervalID)
   }, [])
+
+  const generateUserBlock = user => {
+    const { username, pfp, about } = user
+    return (
+      <Showcase username={username} pfp={pfp} about={about} />
+    )
+  }
 
   return (
     <>
@@ -60,15 +73,8 @@ const Home = () => {
         </span>
       </div>
       <div className="grid grid-cols-3 gap-10 m-10">
-        <Showcase />
-        <Showcase />
-        <Showcase />
-        <Showcase />
-        <Showcase />
-        <Showcase />
-        <Showcase />
-        <Showcase />
-        <Showcase />
+        {console.log(users)}
+        {users && users.map(user => generateUserBlock(user))}
       </div>
     </>
   )

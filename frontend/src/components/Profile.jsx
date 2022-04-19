@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid'
 
 // image
 import phd from '../imgs/phd.jpg'
@@ -56,7 +57,7 @@ const Profile = () => {
       </Link>
 
       <div className="mx-10 flex flex-col justify-center items-center mt-10">
-        <Pfp loggedIn pfp={myPfp} />
+        <Pfp loggedIn pfp={myPfp} isUser={false} />
         <div className="p-5 w-1/3 text-center border-b-2 border-black font-mono text-2xl">
           {user}
         </div>
@@ -69,7 +70,7 @@ const Profile = () => {
         <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
           <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex">
             {myCollection.map((img, index) => (
-              <motion.div className="item p-5" key={index}>
+              <motion.div className="item p-5" key={uuidv4()}>
                 <img src={img} alt="" className="drop-shadow shadow-md min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] object-cover rounded-sm pointer-events-none" />
               </motion.div>
             ))}

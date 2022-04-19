@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-const Showcase = ({ username = 'Megumi', about = 'lol lol', pfp = 'https://i.pinimg.com/originals/96/9a/f0/969af09e0fc0dfc2b3f847cad812b6be.jpg' }) => {
+const Showcase = ({ username, about, pfp }) => {
   const navigate = useNavigate()
 
   const redirect = () => {

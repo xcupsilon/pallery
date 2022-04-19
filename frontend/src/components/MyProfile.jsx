@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 import axios from 'axios'
-
+import { v4 as uuidv4 } from 'uuid'
 // image
 import phd from '../imgs/phd.jpg'
 
@@ -112,7 +112,7 @@ const MyProfile = () => {
         <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
           <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex">
             {myCollection.map((img, index) => (
-              <motion.div className="item p-5" key={index}>
+              <motion.div className="item p-5" key={uuidv4()}>
                 <button onClick={e => artWorkClicked(img)} type="button">
                   <img src={img} alt="" className="drop-shadow shadow-md min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] object-cover rounded-sm" />
                 </button>

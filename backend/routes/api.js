@@ -6,9 +6,11 @@ const isAuthenticated = require('../middlewares/isAuthenticated')
 
 router.post('/users/get_data_all', isAuthenticated, async (req, res) => {
   try {
-    const { body } = req
-    const { username } = body
-    const data = await User.findOne({ username })
+    const data = await User.find()
+    // remove all the user password from data
+    data.forEach(user => {
+      delete user._doc.password
+    })
     res.json(data) // Send back the user data
   } catch (error) {
     res.status(400).send('Error occurred when fetching user profile data')
@@ -20,8 +22,7 @@ router.get('/profile/get_data', isAuthenticated, async (req, res) => {
     const { session } = req
     const { username } = session
     const data = await User.findOne({ username })
-    delete data.password
-    console.log(data)
+    delete data._doc.password // Delete user password property to send back
     res.json(data) // Send back the user data
   } catch (error) {
     res.status(400).send('Error occurred when fetching user profile data')
