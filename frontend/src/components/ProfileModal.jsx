@@ -19,6 +19,7 @@ const ProfileModal = ({ oldImage, oldAbout, setModalVisible }) => {
       })
   }
 
+
   const submit = async e => {
     e.preventDefault()
     // Chanege profile
@@ -32,9 +33,15 @@ const ProfileModal = ({ oldImage, oldAbout, setModalVisible }) => {
     setModalVisible(false)
   }
 
+  const handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      submit(event)
+    }
+  }
+
   return (
     <>
-      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none font-mono">
         <div className="relative w-auto my-6 mx-auto max-w-3xl">
           {/* content */}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -51,11 +58,11 @@ const ProfileModal = ({ oldImage, oldAbout, setModalVisible }) => {
             <div className="relative p-6 flex-auto">
               <div className="mb-4">
                 <label className="ml-1">Profile Picture</label>
-                <input onChange={e => setImageLink(e.target.value)} value={imageLink} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="question" type="text" placeholder="Link for your beautiful pfp!" />
+                <input onChange={e => setImageLink(e.target.value)} value={imageLink} onKeyDown={handleKeyDown} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="question" type="text" placeholder="Link for your beautiful pfp!" />
               </div>
               <div className="mb-4">
                 <label className="ml-1">About Me</label>
-                <input onChange={e => setAbout(e.target.value)} value={about} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="post" type="text" placeholder="Tell everyone something interesting about you!" />
+                <input onChange={e => setAbout(e.target.value)} value={about} onKeyDown={handleKeyDown} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="post" type="text" placeholder="Tell everyone something interesting about you!" />
               </div>
               <div className="flow-root">
                 <button type="submit" onClick={e => submit(e)} className="bg-red-200 text-white font-normal h-10 py-1 px-4 text-base rounded">

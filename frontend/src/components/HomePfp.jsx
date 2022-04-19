@@ -14,9 +14,11 @@ const HomePfp = ({ loggedIn, pfp }) => {
     )
   }
   return (
-    <div className="bg-grey-200">
-      <img src={phd} alt="" className="w-24 h-24 rounded-full hover:shadow-md" />
-    </div>
+    <Link to="/login">
+      <div className="bg-grey-200">
+        <img src={phd} alt="" className="w-24 h-24 rounded-full hover:shadow-md" />
+      </div>
+    </Link>
   )
 }
 

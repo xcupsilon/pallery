@@ -22,9 +22,15 @@ const CollectionModal = ({ oldImage, setModalVisible }) => {
     setModalVisible(false)
   }
 
+  const handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      submit(event)
+    }
+  }
+
   return (
     <>
-      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none font-mono">
         <div className="relative w-auto my-6 mx-auto max-w-3xl">
           {/* content */}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -41,7 +47,7 @@ const CollectionModal = ({ oldImage, setModalVisible }) => {
             <div className="relative p-6 flex-auto">
               <div className="mb-4">
                 <label className="ml-1">Image Link</label>
-                <input onChange={e => setImageLink(e.target.value)} value={imageLink} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="question" type="text" placeholder="Link to your new artwork!" />
+                <input onChange={e => setImageLink(e.target.value)} value={imageLink} onKeyDown={handleKeyDown} className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 text-gray-700 text-base mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-200" id="question" type="text" placeholder="Link to your new artwork!" />
               </div>
               <div className="flow-root">
                 <button type="submit" onClick={e => submit(e)} className="bg-red-200 text-white font-normal h-10 py-1 px-4 text-base rounded">
