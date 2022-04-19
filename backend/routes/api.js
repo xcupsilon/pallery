@@ -15,6 +15,17 @@ router.get('/profile/get_data', isAuthenticated, async (req, res) => {
   }
 })
 
+router.post('/profile/get_user_data', isAuthenticated, async (req, res) => {
+  try {
+    const { body } = req
+    const { username } = body
+    const data = await User.findOne({ username })
+    res.json(data) // Send back the user data
+  } catch (error) {
+    res.status(400).send('Error occurred when fetching user profile data')
+  }
+})
+
 router.post('/profile/add_picture', isAuthenticated, async (req, res) => {
   try {
     const { body, session } = req
@@ -101,7 +112,7 @@ router.post('/profile/replace_collection', isAuthenticated, async (req, res) => 
         {
           $set:
           {
-            collections: collections.map(img => (img !== oldImg ? img : newImg)),
+            collections: collections.splice(collections.indexOf(oldImg), 1, newImg),
           },
         })
     }

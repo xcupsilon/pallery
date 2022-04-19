@@ -41,13 +41,14 @@ const MyProfile = () => {
       }
       setUser(username)
       setMyAbout(about)
+      console.log(collections)
       if (collections) {
         setMyCollection(collections)
       }
     }
 
     getProfileInfo()
-  }, [infoModalVisible, myCollection])
+  }, [infoModalVisible, collectionModalVisible])
 
   useEffect(() => {
     setScrollWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
@@ -107,7 +108,7 @@ const MyProfile = () => {
         </button>
       </div>
 
-      <div className="m-10 mt-5 flex justify-center ">
+      <div className="mx-10 mt-5 flex justify-center ">
         <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
           <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex">
             {myCollection.map((img, index) => (
