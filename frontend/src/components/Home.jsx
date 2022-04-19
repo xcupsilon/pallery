@@ -54,9 +54,11 @@ const Home = () => {
   }, [])
 
   const generateUserBlock = user => {
-    const { username, pfp, about } = user
+    const {
+      username, pfp, about, _id,
+    } = user
     return (
-      <Showcase username={username} pfp={pfp} about={about} />
+      <Showcase username={username} pfp={pfp} about={about} key={_id} />
     )
   }
 
