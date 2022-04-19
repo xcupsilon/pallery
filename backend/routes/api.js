@@ -4,11 +4,24 @@ const router = express.Router()
 const User = require('../models/user')
 const isAuthenticated = require('../middlewares/isAuthenticated')
 
+router.post('/users/get_data_all', isAuthenticated, async (req, res) => {
+  try {
+    const { body } = req
+    const { username } = body
+    const data = await User.findOne({ username })
+    res.json(data) // Send back the user data
+  } catch (error) {
+    res.status(400).send('Error occurred when fetching user profile data')
+  }
+})
+
 router.get('/profile/get_data', isAuthenticated, async (req, res) => {
   try {
     const { session } = req
     const { username } = session
     const data = await User.findOne({ username })
+    delete data.password
+    console.log(data)
     res.json(data) // Send back the user data
   } catch (error) {
     res.status(400).send('Error occurred when fetching user profile data')

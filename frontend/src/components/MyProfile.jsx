@@ -12,7 +12,7 @@ import Pfp from './Pfp'
 import ProfileModal from './ProfileModal'
 import CollectionModal from './CollectionModal'
 
-const PLACE_HOLDER = 'https://cdn.vox-cdn.com/thumbor/qDV-Av0h_Qf1u6MUJ9L_D7uLM-w=/0x0:1200x800/1200x800/filters:focal(428x63:620x255)/cdn.vox-cdn.com/uploads/chorus_image/image/66160336/image__13_.0.png'
+const PLACE_HOLDER = 'https://ak.picdn.net/shutterstock/videos/1038813914/thumb/1.jpg?ip=x480'
 
 const MyProfile = () => {
   const [user, setUser] = useState('')
@@ -112,9 +112,9 @@ const MyProfile = () => {
         <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
           <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex">
             {myCollection.map((img, index) => (
-              <motion.div className="item min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] p-5" key={index}>
+              <motion.div className="item p-5" key={index}>
                 <button onClick={e => artWorkClicked(img)} type="button">
-                  <img src={img} alt="" className="h-full w-full object-cover rounded-sm" />
+                  <img src={img} alt="" className="drop-shadow shadow-md min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] object-cover rounded-sm" />
                 </button>
               </motion.div>
             ))}

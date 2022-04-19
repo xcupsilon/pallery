@@ -69,8 +69,8 @@ const Profile = () => {
         <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
           <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex">
             {myCollection.map((img, index) => (
-              <motion.div className="item min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] p-5" key={index}>
-                <img src={img} alt="" className="h-full w-full object-cover rounded-sm pointer-events-none" />
+              <motion.div className="item p-5" key={index}>
+                <img src={img} alt="" className="drop-shadow shadow-md min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] object-cover rounded-sm pointer-events-none" />
               </motion.div>
             ))}
           </motion.div>
