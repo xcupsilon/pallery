@@ -108,11 +108,12 @@ router.post('/profile/replace_collection', isAuthenticated, async (req, res) => 
           },
         })
     } else {
+      collections[collections.indexOf(oldImg)] = newImg
       await User.updateOne({ username },
         {
           $set:
           {
-            collections: collections.splice(collections.indexOf(oldImg), 1, newImg),
+            collections,
           },
         })
     }
