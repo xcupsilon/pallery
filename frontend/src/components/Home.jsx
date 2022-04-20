@@ -71,7 +71,7 @@ const Home = () => {
         </span>
         <span className="relative left-8">
           {loggedIn
-            && <Logout user={loggedInUser} />}
+            && <Logout setLoggedIn={setLoggedIn} />}
         </span>
       </div>
       <div className="grid grid-cols-3 gap-10 m-10">

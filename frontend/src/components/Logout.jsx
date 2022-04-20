@@ -1,11 +1,20 @@
 import React from 'react'
 import axios from 'axios'
 
-const Logout = ({ user }) => {
+import toast from 'react-hot-toast'
+
+const successToast = () => toast.success(`Good Bye ;-;`, { icon: '🥲', duration: 4000 })
+const throwLogout = error => toast.error(`${error.response.data}`, { icon: '💀' })
+
+const Logout = ({ setLoggedIn }) => {
   const logout = async () => {
     await axios.post('/account/logout')
+      .then(() => {
+        successToast()
+        setLoggedIn(false)
+      })
       .catch(error => {
-        alert(`${error.response.data}`)
+        throwLogout(error)
       })
   }
 
