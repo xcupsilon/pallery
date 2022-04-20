@@ -76,12 +76,12 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="m-10 mt-5 flex justify-center ">
+      <div className="m-10 mt-8 flex justify-center ">
         <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
-          <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex">
+          <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex gap-16">
             {myCollection.map((img, index) => (
-              <motion.div className="item p-5" key={uuidv4()}>
-                <img src={img} alt="" className="drop-shadow shadow-md min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] object-cover rounded-sm pointer-events-none" />
+              <motion.div className="item py-5" key={uuidv4()}>
+                <img src={img} alt="" className="drop-shadow shadow-md min-h-[26rem] h-[26rem] min-w-[36rem] w-[36rem] object-cover rounded-sm pointer-events-none" />
               </motion.div>
             ))}
           </motion.div>
