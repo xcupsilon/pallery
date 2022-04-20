@@ -9,14 +9,14 @@ const Pfp = ({ loggedIn, pfp, isUser }) => {
       return (
         <Link to="/myprofile">
           <div className="bg-grey-200">
-            <img src={pfp} alt="" className="w-40 h-40 rounded-full hover:shadow-md" />
+            <img src={pfp} alt="" className="object-cover w-40 h-40 rounded-full hover:shadow-md" />
           </div>
         </Link>
       )
     }
     return (
       <div className="bg-grey-200">
-        <img src={pfp} alt="" className="w-40 h-40 rounded-full hover:shadow-md" />
+        <img src={pfp} alt="" className="object-cover w-40 h-40 rounded-full hover:shadow-md" />
       </div>
     )
   }

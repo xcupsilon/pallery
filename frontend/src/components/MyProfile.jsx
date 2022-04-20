@@ -96,7 +96,7 @@ const MyProfile = () => {
 
       <InfoModal />
 
-      <div className="mx-10 flex flex-col justify-center items-center mt-10">
+      <div className="mx-10 flex flex-col justify-center items-center mt-4">
         <button onClick={e => setInfoModalVisible(true)} type="button">
           <Pfp loggedIn pfp={myPfp} />
         </button>

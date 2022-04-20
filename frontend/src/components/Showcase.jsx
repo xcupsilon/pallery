@@ -12,7 +12,7 @@ const Showcase = ({ username, about, pfp }) => {
   return (
     <button onClick={e => redirect()} type="button" className="text-left p-5 shadow-lg rounded-2xl border-2 border-solid border-gray-200">
       <div>
-        <img src={pfp} alt="" className="inline w-16 h-16 rounded-full hover:shadow-md" />
+        <img src={pfp} alt="" className="object-cover inline w-16 h-16 rounded-full hover:shadow-md" />
         <h3 className="inline relative bottom-4 ml-5 underline font-mono text-xl">
           {username}
         </h3>

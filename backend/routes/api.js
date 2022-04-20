@@ -8,9 +8,9 @@ router.post('/users/get_data_all', isAuthenticated, async (req, res) => {
   try {
     const data = await User.find()
     // remove all the user password from data
-    data.forEach(user => {
-      delete user._doc.password
-    })
+    for (let i = 0; i < data.length; i++) {
+      delete data[i]._doc.password
+    }
     res.json(data) // Send back the user data
   } catch (error) {
     res.status(400).send('Error occurred when fetching user profile data')
