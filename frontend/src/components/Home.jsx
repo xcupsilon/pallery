@@ -75,7 +75,6 @@ const Home = () => {
         </span>
       </div>
       <div className="grid grid-cols-3 gap-10 m-10">
-        {console.log(users)}
         {users && users.map(user => generateUserBlock(user))}
       </div>
     </>

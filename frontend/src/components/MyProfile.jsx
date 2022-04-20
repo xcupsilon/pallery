@@ -41,7 +41,6 @@ const MyProfile = () => {
       }
       setUser(username)
       setMyAbout(about)
-      console.log(collections)
       if (collections) {
         setMyCollection(collections)
       }

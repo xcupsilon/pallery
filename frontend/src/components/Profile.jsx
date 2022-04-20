@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 import axios from 'axios'
@@ -12,10 +12,13 @@ import phd from '../imgs/phd.jpg'
 import Pfp from './Pfp'
 
 const Profile = () => {
+  // navigator used for redirecting to different routes
+  const navigate = useNavigate()
+
   // get the route params
   const { username } = useParams()
 
-  const [user, setUser] = useState('')
+  const [pageUser, setPageUser] = useState('')
   const [myPfp, setMyPfp] = useState(phd)
   const [myAbout, setMyAbout] = useState('')
   const [myCollection, setMyCollection] = useState([])
@@ -26,15 +29,22 @@ const Profile = () => {
   useEffect(() => {
     const getProfileInfo = async () => {
       const { data } = (await axios.post('/api/profile/get_user_data', { username }))
+      const { data: myData } = (await axios.get('/api/profile/get_data'))
+      // get the currently loggedinuser
+      const { username: loggedInUser } = myData
       const {
-        serverUser, pfp, about, collections,
+        username: currentUser, pfp, about, collections,
       } = data
+      // if the user of the profile is the current loggedin user, go to my profile page
+      if (loggedInUser === currentUser) {
+        navigate('/myprofile')
+      }
       if (!pfp) {
         setMyPfp(phd)
       } else {
         setMyPfp(pfp)
       }
-      setUser(serverUser)
+      setPageUser(currentUser)
       setMyAbout(about)
       if (collections) {
         setMyCollection(collections)
@@ -59,7 +69,7 @@ const Profile = () => {
       <div className="mx-10 flex flex-col justify-center items-center mt-10">
         <Pfp loggedIn pfp={myPfp} isUser={false} />
         <div className="p-5 w-1/3 text-center border-b-2 border-black font-mono text-2xl">
-          {user}
+          {pageUser}
         </div>
         <div className="p-5 pb-12 w-full text-center border-b-2 border-black sfont-bold font-mono text-2xl">
           {myAbout}
