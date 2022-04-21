@@ -20,6 +20,7 @@ const MyProfile = () => {
   const [myAbout, setMyAbout] = useState('')
   const [myCollection, setMyCollection] = useState([])
   const [currImg, setCurrImg] = useState('')
+  const [currIndex, setCurrIndex] = useState(0)
 
   const [scrollWidth, setScrollWidth] = useState(0)
   const carousel = useRef()
@@ -80,8 +81,9 @@ const MyProfile = () => {
     </div>
   )
 
-  const artWorkClicked = img => {
+  const artWorkClicked = (img, index) => {
     setCurrImg(img)
+    setCurrIndex(index)
     setCollectionModalVisible(true)
   }
 
@@ -107,12 +109,12 @@ const MyProfile = () => {
         </button>
       </div>
 
-      <div className="mx-10 mt-6 flex justify-center ">
-        <motion.div ref={carousel} className="carousel cursor-grab overflow-hidden">
-          <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel flex gap-16">
-            {myCollection.map(img => (
-              <motion.div className="item py-5 pr-5" key={uuidv4()}>
-                <button onClick={e => artWorkClicked(img)} type="button">
+      <div className="mx-10 mt-2 flex justify-center">
+        <motion.div ref={carousel} className="carousel overflow-hidden">
+          <motion.div drag="x" dragConstraints={{ right: 0, left: -scrollWidth }} className="inner-carousel pt-5 cursor-grab flex">
+            {myCollection.map((img, index) => (
+              <motion.div className="item pr-16 py-4" key={uuidv4()}>
+                <button onClick={e => artWorkClicked(img, index)} type="button">
                   <img src={img} alt="" className="drop-shadow shadow-md min-h-[25rem] h-[25rem] min-w-[35rem] w-[35rem] object-cover rounded-sm" />
                 </button>
               </motion.div>
@@ -122,7 +124,7 @@ const MyProfile = () => {
       </div>
 
       { collectionModalVisible
-        && <CollectionModal setModalVisible={setCollectionModalVisible} oldImage={currImg} />}
+        && <CollectionModal setModalVisible={setCollectionModalVisible} replaceIndex={currIndex} oldImage={currImg} />}
 
       <AddArtButton />
     </>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const CollectionModal = ({ oldImage, setModalVisible }) => {
+const CollectionModal = ({ replaceIndex, oldImage, setModalVisible }) => {
   const [imageLink, setImageLink] = useState(oldImage)
 
   const addArtwork = async () => {
-    await axios.post('api/profile/replace_collection', { oldImg: oldImage, newImg: imageLink })
+    await axios.post('api/profile/replace_collection', { replaceIndex, newImg: imageLink })
       .catch(error => {
         alert(`${error.response.data}`)
       })

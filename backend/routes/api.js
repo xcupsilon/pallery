@@ -110,7 +110,7 @@ router.post('/profile/replace_collection', isAuthenticated, async (req, res) => 
   try {
     const { body, session } = req
     const { username } = session
-    const { oldImg, newImg } = body
+    const { replaceIndex, newImg } = body
     const { collections } = await User.findOne({ username })
 
     if (!collections) {
@@ -122,7 +122,7 @@ router.post('/profile/replace_collection', isAuthenticated, async (req, res) => 
           },
         })
     } else {
-      collections[collections.indexOf(oldImg)] = newImg
+      collections[replaceIndex] = newImg
       await User.updateOne({ username },
         {
           $set:
